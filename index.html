@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Credit rapid online în România. Aplică simplu și transparent, aprobare în 24h.">
+  <title>Credit Rapid Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f9;
+      color: #222;
+    }
+
+    header {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      margin: 20px 0;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #003366;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      main {
+        padding: 20px 10px;
+      }
+      .card {
+        width: 100%;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Credit Rapid Online</h1>
+  <p>Aprobare în 24 de ore • Proces 100% Online</p>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Simulare și Aplicare Credit</h2>
+
+    <label for="amount">Sumă (€)</label>
+    <input type="number" id="amount" value="1000">
+
+    <label for="months">Durată (luni)</label>
+    <input type="number" id="months" value="12">
+
+    <button id="simulateBtn">Calculează Rata</button>
+    <h3 id="result"></h3>
+
+    <form action="https://formsubmit.co/TONEMAIL@example.com" method="POST">
+      <input type="text" name="Nume" placeholder="Nume complet" required>
+      <input type="email" name="Email" placeholder="Email" required>
+      <input type="tel" name="Telefon" placeholder="Telefon" required>
+      <input type="number" name="Sumă" placeholder="Sumă dorită" required>
+      <input type="number" name="Durată" placeholder="Durată (luni)" required>
+      <button type="submit">Trimite Cererea</button>
+    </form>
+  </div>
+</main>
+
+<footer>
+  IFN Exemplu SRL • Înregistrată la BNR • DAE afișat conform legislației<br>
+  Toate drepturile rezervate © 2026
+</footer>
+
+<script>
+  document.getElementById("simulateBtn").addEventListener("click", function() {
+    let amount = parseFloat(document.getElementById("amount").value);
+    let months = parseInt(document.getElementById("months").value);
+
+    if (!amount || !months || amount <= 0 || months <= 0) {
+      document.getElementById("result").innerText = "Introduceți valori valide!";
+      return;
+    }
+
+    const annualRate = 12; // exemplu dobândă fixă
+    const monthlyRate = annualRate / 100 / 12;
+
+    const monthly = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months));
+
+    document.getElementById("result").innerText = "Rată lunară estimată: " + monthly.toFixed(2) + " €";
+  });
+</script>
+
+</body>
+</html>
